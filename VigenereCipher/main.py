@@ -43,10 +43,40 @@ def vigenere_encrypt(plain_text):
 
     return encrypted_string
 
+# Enter the string that needs to be decrypted here
+def vigenere_decrypt(cipher_text):
+
+    cipher_text = cipher_text.lower()
+    key_pos = 0
+    decrypted_string = ""
+
+    # Encrypt each letter
+    for letter in cipher_text:
+        if letter in alphabet:
+            index = alphabet.find(letter) # get numerical representation of plain text letter
+            key_char = expanded_key[key_pos] # get numerical representation of key letter
+            key_pos += 1
+            key_index = ord(key_char) - 97 # 97 to get 0 index
+
+            # enciphered index = (encipher text index - keyword index) mod 26
+            decrypted_index = (index - key_index) % 26
+
+            decrypted_char = alphabet[decrypted_index]
+
+            decrypted_string += decrypted_char
+
+    return decrypted_string
+
+
 
 print("-------------------")
 print("Vigenere Cipher")
 print("-------------------")
+
 print("Plain text: " + plain_text)
-print("Encrypted text: " + vigenere_encrypt(plain_text))
-print("Decrypted text: " + decrypted_string + "\n")
+
+cipher_text = vigenere_encrypt(plain_text)
+print("Encrypted text: " + cipher_text)
+
+plain_text = vigenere_decrypt(cipher_text)
+print("Decrypted text: " + plain_text + "\n")
