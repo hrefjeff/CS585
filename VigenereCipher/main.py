@@ -50,7 +50,7 @@ def vigenere_decrypt(cipher_text):
     key_pos = 0
     decrypted_string = ""
 
-    # Encrypt each letter
+    # Decrypt each letter
     for letter in cipher_text:
         if letter in alphabet:
             index = alphabet.find(letter) # get numerical representation of plain text letter
