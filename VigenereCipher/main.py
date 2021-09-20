@@ -2,7 +2,11 @@
 
 # === 1. BEGIN SETUP ===
 alphabet = "abcdefghijklmnopqrstuvwxyz"
-plain_text = "THE BOY HAS THE BALL"
+
+#plain_text = "THE BOY HAS THE BALL"
+plain_text = "THE WEATHER OUTSIDE TODAY IS VERY NICE"
+#plain_text = "Arkansas has participated in fourty six United States presidential elections since the state was admitted in to the Union"
+
 key = "Vig"
 
 plain_text = plain_text.lower()
