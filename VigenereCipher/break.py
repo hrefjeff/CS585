@@ -50,20 +50,21 @@ def frequency_analysis(sequence):
         chi_squared_sum = 0.0
 
         #sequence_offset = [(((seq_ascii[j]-97-i)% alphabet_length )+97) for j in range(len(seq_ascii))]
-        sequence_offset = [chr(((ord(sequence[j])-97-index)% alphabet_length )+97) for j in range(len(sequence))]
-        v = [0] * alphabet_length
+        sequence_offset = [chr(((ord(sequence[j]) - 97 - index) % alphabet_length )+97) for j in range(len(sequence))]
+        cipher_table = [0] * alphabet_length
         
-        # count the numbers of each letter in the sequence_offset already in ascii
-        for l in sequence_offset:
-            v[ord(l) - ord('a')] += 1
+        # find the sum of each each letter in the sequence_offset (in ascii)
+        for letter in sequence_offset:
+            cipher_table[ord(letter) - ord('a')] += 1
         
         # divide the array by the length of the sequence to get the frequency percentages
         for j in range(alphabet_length):
-            v[j] *= (1.0/float(len(sequence)))
+            cipher_table[j] *= ( 1.0 / float(len(sequence)))
 
         # compare to the cipher letter frequencies to the english letter frequencies
         for j in range(alphabet_length):
-            chi_squared_sum+=((v[j] - float(character_frequencies[j]))**2)/float(character_frequencies[j])
+            # apply chi squared distribution 
+            chi_squared_sum+=((cipher_table[j] - float(character_frequencies[j]))**2)/float(character_frequencies[j])
 
         # add to overall table of chi squareds
         chi_squared_columns[index] = chi_squared_sum
