@@ -79,16 +79,18 @@ def frequency_analysis(sequence):
 
 # === END FREQUENCY ANALYSIS ===
 
-key += frequency_analysis(bin_1)
-key += frequency_analysis(bin_2)
-key += frequency_analysis(bin_3)
-
+# === BEGIN FREQUNECY ANALYSIS OF EACH BIN ===
 
 print("-------------------")
 print("Breaking the Vigenere Cipher")
 print("-------------------")
 
 print("Cipher text: " + cipher_text)
+
+key += frequency_analysis(bin_1)
+key += frequency_analysis(bin_2)
+key += frequency_analysis(bin_3)
+
 print("The key used to encrypt the plain text is: " + key)
 
 # === Resources ===
