@@ -6,11 +6,11 @@
 
 alphabet = 'abcdefghijklmnopqrstuvwxyz'
 period = 3
-bin_1 = [] # contains all letters shifted by first letter
-bin_2 = [] # contains all letters shifted by second letter
-bin_3 = [] # contains all letters shifted by third letter
+bin_1 = [] # contains all letters in ciphertext shifted by the first letter of the key
+bin_2 = [] # contains all letters in ciphertext shifted by the second letter of the key
+bin_3 = [] # contains all letters in ciphertext shifted by the third letter of the key
 cipher_text = 'opkwweciyopkwirgitypkdavgiedvmjcznqjzenzzkopkrmgopkmqyqmxtvoxm' # Want to produce 'theboyhastheballandheisplayingoutsidewheretheweatherisverynice'
-plain_text = ''
+key = ''
 
 # Character frequencies
 character_frequencies = [0.08167, 0.01492, 0.02782, 0.04253, 0.12702, 0.02228, 0.02015,
@@ -31,45 +31,51 @@ for index,letter in enumerate(cipher_text):
 # === END GROUPING OF LETTERS ===
 
 # === 3. BEGIN FREQUENCY ANALYSIS ===
-print(bin_1)
-print(bin_2)
-print(bin_3)
 
-def freq_analysis(sequence):
-	all_chi_squareds = [0] * 26
+def frequency_analysis(sequence):
+    """
+    frequency_analysis Utilizes Chi Squared statistical analysis to determine character
 
-	for i in range(26):
+    :sequence: Sequence of characters that were shifted by the same key
+    """
+    all_chi_squareds = [0] * 26
 
-		chi_squared_sum = 0.0
+    for i in range(26):
 
-		#sequence_offset = [(((seq_ascii[j]-97-i)%26)+97) for j in range(len(seq_ascii))]
-		sequence_offset = [chr(((ord(sequence[j])-97-i)%26)+97) for j in range(len(sequence))]
-		v = [0] * 26
-		# count the numbers of each letter in the sequence_offset already in ascii
-		for l in sequence_offset:
-			v[ord(l) - ord('a')] += 1
-		# divide the array by the length of the sequence to get the frequency percentages
-		for j in range(26):
-			v[j] *= (1.0/float(len(sequence)))
+        chi_squared_sum = 0.0
 
-		# now you can compare to the english frequencies
-		for j in range(26):
-			chi_squared_sum+=((v[j] - float(character_frequencies[j]))**2)/float(character_frequencies[j])
+        #sequence_offset = [(((seq_ascii[j]-97-i)%26)+97) for j in range(len(seq_ascii))]
+        sequence_offset = [chr(((ord(sequence[j])-97-i)%26)+97) for j in range(len(sequence))]
+        v = [0] * 26
+        # count the numbers of each letter in the sequence_offset already in ascii
+        for l in sequence_offset:
+            v[ord(l) - ord('a')] += 1
+        # divide the array by the length of the sequence to get the frequency percentages
+        for j in range(26):
+            v[j] *= (1.0/float(len(sequence)))
 
-		# add it to the big table of chi squareds
-		all_chi_squareds[i] = chi_squared_sum
+        # now you can compare to the english frequencies
+        for j in range(26):
+            chi_squared_sum+=((v[j] - float(character_frequencies[j]))**2)/float(character_frequencies[j])
 
-	# return the letter of the key that it needs to be shifted by
-	# this is found by the smallest chi-squared statistic (smallest different between sequence distribution and 
-	# english distribution)
-	shift = all_chi_squareds.index(min(all_chi_squareds))
+        # add it to the big table of chi squareds
+        all_chi_squareds[i] = chi_squared_sum
 
-	# return the letter
-	return chr(shift+97)
+    # return the letter of the key that it needs to be shifted by
+    # this is found by the smallest chi-squared statistic (smallest different between sequence distribution and 
+    # english distribution)
+    shift = all_chi_squareds.index(min(all_chi_squareds))
 
-print(freq_analysis(bin_1))
-print(freq_analysis(bin_2))
-print(freq_analysis(bin_3))
+    # return the letter
+    return chr(shift+97)
+
+# === END FREQUENCY ANALYSIS ===
+
+key += frequency_analysis(bin_1)
+key += frequency_analysis(bin_2)
+key += frequency_analysis(bin_3)
+
+print("The key used to encrypt the plain text is: " + key)
 
 # https://www.youtube.com/watch?v=QgHnr8-h0xI @ 12:54
 # https://www.youtube.com/watch?v=LaWp_Kq0cKs @ 5:42
