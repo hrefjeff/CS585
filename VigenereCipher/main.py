@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-# Variables and Setup
+# === 1. BEGIN SETUP ===
 alphabet = "abcdefghijklmnopqrstuvwxyz"
 plain_text = "THE BOY HAS THE BALL"
 key = "Vig"
@@ -8,6 +8,9 @@ key = "Vig"
 plain_text = plain_text.lower()
 key = key.lower()
 
+# === END SETUP ===
+
+# === 2. BEGIN KEY EXPANSION ===
 # Expand the key in the case it is shorter than the string to be encrypted
 expanded_key = key
 expanded_key_length = len(expanded_key)
@@ -19,9 +22,14 @@ while expanded_key_length < plain_text_length:
 
 decrypted_string = ""
 
-# Enter the string that needs to be encrypted here
-def vigenere_encrypt(plain_text):
+# === END KEY EXPANSION ===
 
+def vigenere_encrypt(plain_text):
+    """
+    vigenere_encrypt Encrypts a string using the Vigenere Cipher method
+
+    :plain_text: String that a user wants encrypted
+    """
     plain_text = plain_text.lower()
     key_pos = 0
     encrypted_string = ""
@@ -43,9 +51,12 @@ def vigenere_encrypt(plain_text):
 
     return encrypted_string
 
-# Enter the string that needs to be decrypted here
 def vigenere_decrypt(cipher_text):
+    """
+    vigenere_decrypt Decrypts a string using the Vigenere Cipher method
 
+    :cipher_text: String that a user wants decrypted
+    """
     cipher_text = cipher_text.lower()
     key_pos = 0
     decrypted_string = ""
@@ -67,7 +78,7 @@ def vigenere_decrypt(cipher_text):
 
     return decrypted_string
 
-
+# === 3. BEGIN MAIN PROGRAM ===
 
 print("-------------------")
 print("Vigenere Cipher")
@@ -80,3 +91,5 @@ print("Encrypted text: " + cipher_text)
 
 plain_text = vigenere_decrypt(cipher_text)
 print("Decrypted text: " + plain_text + "\n")
+
+# === END MAIN PROGRAM ===
