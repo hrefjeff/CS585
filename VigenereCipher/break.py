@@ -35,6 +35,10 @@ for index,letter in enumerate(cipher_text):
 def frequency_analysis(sequence):
     """
     frequency_analysis Utilizes Chi Squared statistical analysis to determine character
+    
+    Performs frequency analysis on the "sequence" of the ciphertext to return the letter for that part of the key
+    Uses the Chi-Squared Statistic to measure how similar two probability distributions are. 
+    (The two being the ciphertext and regular english distribution)
 
     :sequence: Sequence of characters that were shifted by the same key
     """
