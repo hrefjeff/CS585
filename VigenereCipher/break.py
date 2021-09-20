@@ -5,18 +5,24 @@
 # === 1. BEGIN SETUP ===
 
 alphabet = 'abcdefghijklmnopqrstuvwxyz'
-period = 3
-bin_1 = [] # contains all letters in ciphertext shifted by the first letter of the key
-bin_2 = [] # contains all letters in ciphertext shifted by the second letter of the key
-bin_3 = [] # contains all letters in ciphertext shifted by the third letter of the key
-cipher_text = 'opkwweciyopkwirgitypkdavgiedvmjcznqjzenzzkopkrmgopkmqyqmxtvoxm' # Want to produce 'theboyhastheballandheisplayingoutsidewheretheweatherisverynice'
-key = ''
 
 # Character frequencies
 character_frequencies = [0.08167, 0.01492, 0.02782, 0.04253, 0.12702, 0.02228, 0.02015,
                         0.06094, 0.06966, 0.00153, 0.00772, 0.04025, 0.02406, 0.06749,
                         0.07507, 0.01929, 0.00095, 0.05987, 0.06327, 0.09056, 0.02758,
                         0.00978, 0.02360, 0.00150, 0.01974, 0.00074]
+                        
+period = 3
+
+#cipher_text = 'opkwweciyopkwirgitypkdavgiedvmjcznqjzenzzkopkrmgopkmqyqmxtvoxm' # Want to produce 'theboyhastheballandheisplayingoutsidewheretheweatherisverynice'
+#cipher_text = 'opkrmgopkmwaoaoymzjlgtqyqmxtvoxm' # Want to produce 'theweatheroutsidetodayisverynice'
+cipher_text = 'vzqvvyvanvavvzzdkokizzloinupzztaosctdbkyazvbknxxzaoymtoqggmrzkzdwtnaoikkopknbgomcvagyuoobkyqtowzcmaiqui' # Want to produce 'arkansashasparticipatedinfourtysixunitedstatespresidentialelectionssincethestatewasadmittedintotheunion'
+
+bin_1 = [] # contains all letters in ciphertext shifted by the first letter of the key
+bin_2 = [] # contains all letters in ciphertext shifted by the second letter of the key
+bin_3 = [] # contains all letters in ciphertext shifted by the third letter of the key
+
+key = ''
                         
 # === 2. BEGIN GROUPING OF LETTERS ===
 
