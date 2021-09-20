@@ -34,43 +34,46 @@ for index,letter in enumerate(cipher_text):
 
 def frequency_analysis(sequence):
     """
-    frequency_analysis Utilizes Chi Squared statistical analysis to determine character
+    frequency_analysis Utilizes Chi Squared statistical analysis to determine key character
     
-    Performs frequency analysis on the "sequence" of the ciphertext to return the letter for that part of the key
-    Uses the Chi-Squared Statistic to measure how similar two probability distributions are. 
-    (The two being the ciphertext and regular english distribution)
+    This function performs a frequency analysis on the incoming sequence of characters (presumably cipher text)
+    and returns the letter for that part of the key. The Chi Squared Statistic is leveraged to to measure how 
+    similar the probablity distributions of the cipher text and english letter distribution is
 
-    :sequence: Sequence of characters that were shifted by the same key
+    :sequence: String of characters that were shifted by the same key
     """
-    all_chi_squareds = [0] * 26
+    alphabet_length = len(alphabet)
+    chi_squared_columns = [0] * alphabet_length
 
-    for i in range(26):
+    for index in range(alphabet_length):
 
         chi_squared_sum = 0.0
 
-        #sequence_offset = [(((seq_ascii[j]-97-i)%26)+97) for j in range(len(seq_ascii))]
-        sequence_offset = [chr(((ord(sequence[j])-97-i)%26)+97) for j in range(len(sequence))]
-        v = [0] * 26
+        #sequence_offset = [(((seq_ascii[j]-97-i)% alphabet_length )+97) for j in range(len(seq_ascii))]
+        sequence_offset = [chr(((ord(sequence[j])-97-index)% alphabet_length )+97) for j in range(len(sequence))]
+        v = [0] * alphabet_length
+        
         # count the numbers of each letter in the sequence_offset already in ascii
         for l in sequence_offset:
             v[ord(l) - ord('a')] += 1
+        
         # divide the array by the length of the sequence to get the frequency percentages
-        for j in range(26):
+        for j in range(alphabet_length):
             v[j] *= (1.0/float(len(sequence)))
 
-        # now you can compare to the english frequencies
-        for j in range(26):
+        # compare to the cipher letter frequencies to the english letter frequencies
+        for j in range(alphabet_length):
             chi_squared_sum+=((v[j] - float(character_frequencies[j]))**2)/float(character_frequencies[j])
 
-        # add it to the big table of chi squareds
-        all_chi_squareds[i] = chi_squared_sum
+        # add to overall table of chi squareds
+        chi_squared_columns[index] = chi_squared_sum
+
+    # find the smallest chi-squared statistic (smallest difference between sequence distribution and 
+    # english distribution allows us to determine which letter is which)
+    smallest_diff = min(chi_squared_columns)
+    shift = chi_squared_columns.index(smallest_diff)
 
     # return the letter of the key that it needs to be shifted by
-    # this is found by the smallest chi-squared statistic (smallest different between sequence distribution and 
-    # english distribution)
-    shift = all_chi_squareds.index(min(all_chi_squareds))
-
-    # return the letter
     return chr(shift+97)
 
 # === END FREQUENCY ANALYSIS ===
@@ -79,7 +82,14 @@ key += frequency_analysis(bin_1)
 key += frequency_analysis(bin_2)
 key += frequency_analysis(bin_3)
 
+
+print("-------------------")
+print("Breaking the Vigenere Cipher")
+print("-------------------")
+
+print("Cipher text: " + cipher_text)
 print("The key used to encrypt the plain text is: " + key)
 
+# === Resources ===
 # https://www.youtube.com/watch?v=QgHnr8-h0xI @ 12:54
 # https://www.youtube.com/watch?v=LaWp_Kq0cKs @ 5:42
