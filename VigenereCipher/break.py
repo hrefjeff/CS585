@@ -1,5 +1,11 @@
 #!/usr/bin/python3
 
+'''
+Author: Jeffrey Allen
+Class: CS585 Fall 2021
+Date: 9/20/2021
+'''
+
 # Breaking the Vigenere Cipher >>ASSUMINE WE KNOW PERIOD IS 3<<<!!!!
 
 # === 1. BEGIN SETUP ===
