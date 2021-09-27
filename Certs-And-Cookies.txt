@@ -1,0 +1,11 @@
+1. Go to a website (https) and check the public key certificate that your browser uses to communicate with it. Briefly explain the certification path, valid period, public key algorithm, and key size that your browser uses. 
+2.  Go to a few websites and find out the cookies that the website put on your machine.
+     Use the "developer tools" that come with your browser.  Under "application" ->"storage", you will find the cookies.
+     Briefly describe the cookies that you find.
+     
+- Navigated Youtube.com's cookies
+- Found 6 cookies. https://cookiedatabase.org/ did a great job at describing what the cookies are for
+  1. YSC - ‘YSC’ is used by YouTube to remember user input and associate a user’s actions. This cookie lasts for as long as the user keeps their browser open.
+  2. PREF - YouTube uses the ‘PREF’ cookie to store information such as a user’s preferred page configuration and playback preferences like autoplay, shuffle content, and player size. For YouTube Music, these preferences include volume, repeat mode, and autoplay. This cookie expires 8 months from a user’s last use.
+  3. GPS - Used to store location data for Marketing/Tracking.
+  4. VISITOR_INFO1_LIVE - Used to provide bandwidth estimations that expires after 6 months.
