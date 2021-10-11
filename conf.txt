@@ -1,0 +1,25 @@
+Given the security levels TOP SECRET, SECRET, CONFIDENTIAL, and UNCLASSIFIED
+(ordered from highest to lowest), and the categories A, B, and C, specify what
+type of access (read, write, both, or neither) is allowed in each of the following situations.
+Assume that discretionary access controls allow anyone access unless otherwise
+specified.
+
+1. Paul, cleared for (TOP SECRET, { A, C }),
+    wants to access a document classified
+    (SECRET, { B, C }).
+
+2. Anna, cleared for (CONFIDENTIAL, { C }),
+    wants to access a document classified
+    (CONFIDENTIAL, { B }).
+
+3. Jesse, cleared for (SECRET, { C }),
+    wants to access a document classified
+    (CONFIDENTIAL,{ C }).
+
+4. Sammi, cleared for (TOP SECRET, { A, C }),
+    wants to access a document
+    classified (CONFIDENTIAL, { A }).
+
+(e) Robin, who has no clearances (and so works at the UNCLASSIFIED level),
+    wants to access a document classified
+    (CONFIDENTIAL, { B }).
