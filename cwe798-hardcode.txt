@@ -1,0 +1,20 @@
+1. Introduction
+2. Description
+3. Code examples
+  a. draw network diagram -> put it on microsoft paint. copy the test network diagram format  
+  b. use network diagram again -> explain with backend authentication and discuss consequence for distributed systems
+    
+4. how to mitigate this issue?
+
+For inbound authentication: 
+
+* Rather than hard-code a default username and password, key, or other authentication credentials for first time logins, utilize a "first login" mode that requires the user to enter a unique strong password or key.
+
+For outbound authentication: 
+ 
+* store passwords, keys, and other credentials outside of the code in a strongly-protected, encrypted configuration file or database that is protected from access by all outsiders, 
+including other local users on the same system. Properly protect the key (CWE-320). 
+
+* If you cannot use encryption to protect the file, then make sure that the permissions are as restrictive as possible [REF-7].
+In Windows environments, the Encrypted File System (EFS) may provide some protection.    
+    
