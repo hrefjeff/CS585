@@ -1,4 +1,4 @@
-1. Cryptography - how to obfuscate information from attacker
+1. Cryptography - how to obfuscate information from attacker (symettric/public key)
 1. Usability/Psychology
 1. User authentication
 1. Identities - ways to identify process/person/program
