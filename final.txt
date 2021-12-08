@@ -1,0 +1,16 @@
+A). Draw a diagram to present all computer security topics that we discussed in class.  Include secure coding errors in your diagram. Connect the topics that are related.
+
+B). Explain your diagram.
+
+C). Selects two topics. For each topic, explain the following:
+
+The key concept of the topic
+Why do you think that the topic that you select is important
+Explain the threats, attacks, challenges, and impacts 
+Explain countermeasures or solutions
+Provide some real world examples  
+
+
+Topic 1: Vulnerabilty Analysis
+
+Topic 2: Authentication
